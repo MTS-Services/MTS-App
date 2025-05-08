@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mts_app/navigation_menu.dart';
 import 'package:mts_app/src/controller/theme_controller.dart';
-import 'package:mts_app/src/view/screen/login_screen.dart';
+import 'package:mts_app/src/view/screen/login_register_screen.dart';
 
 class MtsApp extends StatelessWidget {
   MtsApp({super.key});
@@ -38,7 +38,7 @@ class MtsApp extends StatelessWidget {
           ),
           iconTheme: const IconThemeData(color: Colors.white),
         ),
-        home: const LoginScreen(),
+        home: const LoginRegisterScreen(),
       ),
     );
   }
