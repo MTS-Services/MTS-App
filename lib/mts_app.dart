@@ -9,7 +9,7 @@ class MtsApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'MTS App',
-      home: HomeScreen(),
+      home: LoginRegisterScreen(),
     );
   }
 }

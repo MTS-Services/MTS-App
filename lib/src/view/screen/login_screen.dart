@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class LoginRegisterScreen extends StatefulWidget {
+  const LoginRegisterScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<LoginRegisterScreen> createState() => _LoginRegisterScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _LoginRegisterScreenState extends State<LoginRegisterScreen> {
   bool showPassword = false;
 
 final _loginFormKey =GlobalKey<FormState>();
