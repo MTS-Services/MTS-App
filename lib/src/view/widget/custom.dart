@@ -6,7 +6,7 @@ class StatCard extends StatelessWidget {
   final String title;
   final String value;
 
-  const StatCard({
+  const StatCard({super.key, 
     required this.icon,
     required this.iconColor,
     required this.title,
