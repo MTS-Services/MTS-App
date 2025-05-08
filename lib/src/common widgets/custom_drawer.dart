@@ -20,7 +20,7 @@ class AppDrawer extends StatelessWidget {
         children: [
           DrawerHeader(
             decoration: BoxDecoration(
-              color: isDark ? Color(0xff11284a) : Color(0xfff1f5f9),
+              color: isDark ? const Color(0xff11284a) : Color(0xfff1f5f9),
             ),
             child: Image(
               fit: BoxFit.cover,
