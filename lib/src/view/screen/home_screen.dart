@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mts_app/core/color_path.dart';
 import 'package:mts_app/src/view/widget/custom.dart';
 import 'package:pie_chart/pie_chart.dart';
 
@@ -11,7 +12,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final Map<String, double> dataMap = {
-    "Sales": 80,
+    "Sales": 30,
     "Operations": 30,
     "Canceled": 15,
     "Assigned": 10,
@@ -79,7 +80,7 @@ class _HomeScreenState extends State<HomeScreen> {
               Container(
                 width: double.infinity,
                 decoration: BoxDecoration(
-                  color: const Color(0xFF342019),
+                  color:Color(0xFF192034),
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child: Padding(
@@ -198,7 +199,7 @@ class _HomeScreenState extends State<HomeScreen> {
               Container(
                 width: double.infinity,
                 decoration: BoxDecoration(
-                  color: const Color(0xFF342019),
+                  color:Color(0xFF192034),
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child: Padding(
@@ -210,48 +211,38 @@ class _HomeScreenState extends State<HomeScreen> {
                         "Dashboard Status",
                         style: Theme.of(context).textTheme.titleLarge,
                       ),
-                      const SizedBox(height: 12),
-                      ListView.builder(
-                        shrinkWrap: true,
-                        physics: BouncingScrollPhysics(),
-                        itemCount: items.length,
-                        itemBuilder: (context, index) {
-                          final item = items[index];
-                          return Container(
-                            margin: const EdgeInsets.symmetric(vertical: 8),
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 16,
-                              vertical: 12,
-                            ),
-                            decoration: BoxDecoration(
-                              color: Color(0xFF192841),
-                              borderRadius: BorderRadius.circular(12),
-                            ),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  item['title'],
-                                  style: TextStyle(
-                                    fontSize: 16,
-                                    color: Colors.white,
-                                  ),
+                      SizedBox(height: 20,),
+                      ...List.generate(items.length, (index) {
+                        final item = items[index];
+                        return Container(
+                          margin: const EdgeInsets.symmetric(vertical: 8),
+                          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                          decoration: BoxDecoration(
+                            color: Color(0xFF0F172A),
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                item['title'],
+                                style: Theme.of(context).textTheme.bodySmall,
+                              ),
+                              Text(
+                                item['amount'],
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w500,
+                                  color: item['color'],
                                 ),
-                                Text(
-                                  item['amount'],
-                                  style: TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.bold,
-                                    color: item['color'],
-                                  ),
-                                ),
-                              ],
-                            ),
-                          );
-                        },
-                      ),
+                              ),
+                            ],
+                          ),
+                        );
+                      }),
                     ],
-                  ),
+                  )
+
                 ),
               ),
             ],

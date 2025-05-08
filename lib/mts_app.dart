@@ -16,8 +16,8 @@ class MtsApp extends StatelessWidget {
         brightness: Brightness.dark,
         primaryColor: Colors.black,
         textTheme: TextTheme(
-          titleLarge: TextStyle(fontSize: 18, fontWeight: FontWeight.w600,color: Color(0xFFFFFFFF),
-        ),
+          titleLarge: TextStyle(fontSize: 18, fontWeight: FontWeight.w600,color: Color(0xFFFFFFFF),),
+          bodySmall: TextStyle(fontSize: 16, fontWeight: FontWeight.w400,color: Color(0xFF9CA3AF),)
         )
       ),
     );
