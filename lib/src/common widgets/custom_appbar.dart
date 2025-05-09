@@ -24,53 +24,67 @@ class _CustomAppBarState extends State<CustomAppBar> {
       final isDark = controller.isDark.value;
 
       return AppBar(
-        foregroundColor: Colors.white,
-        title: Image(
-          height: 100,
-          image: AssetImage(
-            isDark ? ImagePath.appLogoLight : ImagePath.appLogoDark,
-          ),
+        automaticallyImplyLeading: false,
+        elevation: 0,
+        surfaceTintColor: Colors.transparent,
+        title: Row(
+          children: [
+            IconButton(
+              splashRadius: 40,
+              icon: const Icon(
+                Iconsax.textalign_left5,
+                size: 27,
+                color: Colors.grey,
+              ),
+              onPressed: () => Scaffold.of(context).openDrawer(),
+            ),
+            Transform.translate(
+              offset: Offset(-22, 0),
+              child: Image.asset(
+                isDark ? ImagePath.appLogoLight : ImagePath.appLogoDark,
+                height: 100, // Adjust size as needed
+                fit: BoxFit.contain,
+              ),
+            ),
+          ],
         ),
         actions: [
-          IconButton(
-            icon: Icon(
-              isDark ? Icons.wb_sunny_outlined : Icons.dark_mode_outlined,
-              color: isDark ? Colors.amber : Colors.grey,
+          CircleAvatar(
+            backgroundColor:
+                isDark ? const Color(0xff11284a) : Colors.grey[200],
+            child: IconButton(
+              icon: Icon(
+                isDark ? Icons.wb_sunny_outlined : Icons.dark_mode_outlined,
+                color: isDark ? Colors.amber : Colors.grey,
+              ),
+              onPressed: () {
+                controller.toggleTheme(!isDark);
+              },
             ),
-            onPressed: () {
-              controller.toggleTheme(!isDark);
-            },
           ),
-          IconButton(
-            icon: Icon(Iconsax.notification, color: Colors.grey),
-            onPressed: () {},
+          const SizedBox(width: 10),
+          CircleAvatar(
+            backgroundColor:
+                isDark ? const Color(0xff11284a) : Colors.grey[200],
+            child: const Icon(Iconsax.notification, color: Colors.grey),
           ),
-          Padding(
-            padding: const EdgeInsets.only(left: 8),
-            child: CircleAvatar(
-              backgroundColor: Colors.white,
-              radius: 20,
-              child: ClipOval(
-                child: Image.network(
-                  'https://images.unsplash.com/photo-1494790108377-be9c29b29330?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D',
-                  fit: BoxFit.cover,
-                  height: 36,
-                  width: 36,
+          const SizedBox(width: 10),
+          const CircleAvatar(
+            backgroundColor: Colors.white,
+            radius: 20,
+            child: ClipOval(
+              child: Image(
+                image: NetworkImage(
+                  'https://images.unsplash.com/photo-1494790108377-be9c29b29330?fm=jpg&q=60&w=3000',
                 ),
+                fit: BoxFit.cover,
+                height: 36,
+                width: 36,
               ),
             ),
           ),
           const SizedBox(width: 15),
         ],
-        titleSpacing: 0,
-        leading: Builder(
-          builder: (context) {
-            return GestureDetector(
-              onTap: () => Scaffold.of(context).openDrawer(),
-              child: Icon(Iconsax.textalign_left5, color: Colors.grey),
-            );
-          },
-        ),
       );
     });
   }

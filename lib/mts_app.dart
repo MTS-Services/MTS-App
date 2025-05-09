@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:mts_app/navigation_menu.dart';
 import 'package:mts_app/src/controller/theme_controller.dart';
 import 'package:mts_app/src/view/screen/login_register_screen.dart';
 
@@ -30,7 +29,7 @@ class MtsApp extends StatelessWidget {
         darkTheme: ThemeData(
           brightness: Brightness.dark,
           primaryColor: Colors.deepPurple,
-          scaffoldBackgroundColor: const Color(0xFF0f1729),
+          scaffoldBackgroundColor: const Color(0xFF0F1729),
           appBarTheme: const AppBarTheme(
             backgroundColor: Color(0xFF0f1729),
             foregroundColor: Colors.white,
