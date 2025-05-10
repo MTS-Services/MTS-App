@@ -39,7 +39,7 @@ dependencies:
   iconsax: ^0.0.8
   get: ^4.7.2
   pie_chart: ^5.1.0
-  dropdown_button2: ^2.3.9
+
 
 dev_dependencies:
   flutter_test:

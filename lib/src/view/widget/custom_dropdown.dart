@@ -1,105 +1,94 @@
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:mts_app/core/color_path.dart';
-class CustomDropdownButton extends StatefulWidget {
-  final String listType;
-  final List<String> itemList;
+import '../../../core/responsive_size.dart';
+import '../../controller/theme_controller.dart';
 
-  const CustomDropdownButton({
+class CustomDropdown extends StatelessWidget {
+  final List<String> items;
+  final String? selectedValue;
+  final void Function(String?) onChanged;
+
+  const CustomDropdown({
     super.key,
-    required this.itemList,
-    required this.listType,
+    required this.items,
+    required this.selectedValue,
+    required this.onChanged,
   });
 
   @override
-  State<CustomDropdownButton> createState() => _CustomDropdownButtonState();
-}
-
-class _CustomDropdownButtonState extends State<CustomDropdownButton> {
-  String? selectedItem;
-
-  @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 5,bottom: 25),
-      child: DropdownButtonHideUnderline(
-        child: DropdownButton2<String>(
-          isExpanded: true,
-          value: selectedItem,
-          hint: Text(
-            widget.listType,
-            style: TextStyle(
-              fontSize: 15,
-              fontWeight: FontWeight.w500,
-              color: Colors.grey.shade600,
-            ),
+    ResponsiveSizes.init(context);
+    final themeController = Get.put(ThemeController());
+    return Obx(() {
+      final isDark = themeController.isDark.value;
+      return DropdownButton2<String>(
+        isExpanded: true,
+        underline: const SizedBox.shrink(),
+        hint: Text(
+          'Select Item',
+          style: TextStyle(
+            fontSize: ResponsiveSizes.fontMedium,
+            color: isDark ? Colors.white : Colors.black,
           ),
-          items: widget.itemList
-              .map((item) => DropdownMenuItem(
-            value: item,
-            child: Text(
-              item,
-              style: const TextStyle(
-                fontSize: 15,
-                color: Colors.black87,
-              ),
-            ),
-          ))
-              .toList(),
-          onChanged: (value) {
-            setState(() {
-              selectedItem = value;
-            });
-          },
-          iconStyleData: IconStyleData(
-            icon:  Icon(Icons.keyboard_arrow_down_rounded),
-            iconSize: 20,
-            iconEnabledColor: AppColor.fontGreyColor,
+          overflow: TextOverflow.ellipsis,
+        ),
+        value: items.contains(selectedValue) ? selectedValue : null,
+        items:
+            items
+                .toSet()
+                .map(
+                  (item) => DropdownMenuItem<String>(
+                    alignment: Alignment.centerLeft,
+                    value: item,
+                    child: Text(
+                      item,
+                      style: TextStyle(
+                        fontSize: ResponsiveSizes.fontSmall,
+                        color: isDark ? Colors.white : Colors.black,
+                      ),
+                    ),
+                  ),
+                )
+                .toList(),
+        onChanged: onChanged,
+        buttonStyleData: ButtonStyleData(
+          height: ResponsiveSizes.blockHeight * 6,
+          padding: EdgeInsets.symmetric(
+            horizontal: ResponsiveSizes.paddingMedium,
           ),
-          dropdownStyleData: DropdownStyleData(
-            maxHeight: 300,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(12),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black.withOpacity(0.05),
-                  blurRadius: 10,
-                  offset: const Offset(0, 4),
-                ),
-              ],
+          decoration: BoxDecoration(
+            color: isDark ? AppColor.salesComment : AppColor.amountText,
+            borderRadius: BorderRadius.circular(12),
+            border: Border.all(
+              color: isDark ? Colors.blueGrey.shade700 : AppColor.borderColor,
+              width: 1.5,
             ),
-            scrollbarTheme: ScrollbarThemeData(
-              thumbColor: WidgetStateProperty.all(
-                AppColor.fontGreyColor.withOpacity(0.7),
-              ),
-              radius: const Radius.circular(8),
-            ),
-          ),
-          buttonStyleData: ButtonStyleData(
-            height: 40,
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            decoration: BoxDecoration(
-              color: Colors.grey.shade100,
-              borderRadius: BorderRadius.circular(12),
-              border: Border.all(
-                color: AppColor.loginPageBorderColor,
-                width: 1,
-              ),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black.withOpacity(0.03),
-                  blurRadius: 6,
-                  offset: const Offset(0, 2),
-                ),
-              ],
-            ),
-          ),
-          menuItemStyleData: const MenuItemStyleData(
-            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
           ),
         ),
-      ),
-    );
+        dropdownStyleData: DropdownStyleData(
+          maxHeight: ResponsiveSizes.blockHeight * 30,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(12),
+            color: isDark ? AppColor.salesComment : AppColor.amountText,
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(0.03),
+                blurRadius: 2,
+                spreadRadius: 2,
+                offset: Offset(2, 2),
+              ),
+            ],
+          ),
+        ),
+        menuItemStyleData: MenuItemStyleData(
+          height: ResponsiveSizes.blockHeight * 5,
+          padding: EdgeInsets.symmetric(
+            horizontal: ResponsiveSizes.paddingMedium,
+          ),
+        ),
+      );
+    });
   }
 }
