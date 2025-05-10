@@ -39,7 +39,7 @@ class MtsApp extends StatelessWidget {
           ),
           iconTheme: const IconThemeData(color: Colors.white),
         ),
-        home: const LoginRegisterScreen(),
+        home: const HomeScreen(),
       ),
     );
   }

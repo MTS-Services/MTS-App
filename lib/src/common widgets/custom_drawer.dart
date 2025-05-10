@@ -5,6 +5,7 @@ import 'package:mts_app/core/image_path.dart';
 import 'package:mts_app/src/controller/theme_controller.dart';
 import 'package:mts_app/src/view/screen/home_screen.dart';
 import 'package:mts_app/src/common%20widgets/custom_drawer_icons.dart';
+import 'package:mts_app/src/view/screen/login_register_screen.dart';
 
 class AppDrawer extends StatelessWidget {
   const AppDrawer({super.key});
@@ -60,6 +61,13 @@ class AppDrawer extends StatelessWidget {
             icon: Icon(Iconsax.profile_circle),
             onTap: () {
               Get.to(() {});
+            },
+          ),
+          CustomDrawerIcon(
+            title: 'Log Out',
+            icon: Icon(Iconsax.logout),
+            onTap: () {
+              Get.to(() => LoginRegisterScreen());
             },
           ),
         ],
