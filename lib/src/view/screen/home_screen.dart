@@ -38,11 +38,11 @@ class _HomeScreenState extends State<HomeScreen> {
   double percentOfTotal = 34;
 
   final List<Map<String, dynamic>> items = [
-    {'title': 'Total Carry', 'amount': '\$740', 'color': Colors.white},
-    {'title': 'Total Assign', 'amount': '\$0', 'color': Colors.white},
-    {'title': 'Total Operation', 'amount': '\$0', 'color': Colors.white},
+    {'title': 'Total Carry', 'amount': '\$740'},
+    {'title': 'Total Assign', 'amount': '\$0'},
+    {'title': 'Total Operation', 'amount': '\$0'},
     {'title': 'Total Cancelled', 'amount': '\$2240', 'color': Colors.red},
-    {'title': 'Total Sales', 'amount': '\$2240', 'color': Colors.white},
+    {'title': 'Total Sales', 'amount': '\$2240'},
     {'title': 'Need to Assign', 'amount': '\$1200', 'color': Colors.orange},
   ];
 
@@ -306,7 +306,14 @@ class _HomeScreenState extends State<HomeScreen> {
                             children: [
                               Text(
                                 "Dashboard Status",
-                                style: Theme.of(context).textTheme.titleLarge,
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w600,
+                                  color:
+                                      isDark
+                                          ? Color(0xFFFFFFFF)
+                                          : Color(0xFF0F1729),
+                                ),
                               ),
                               SizedBox(height: 20),
                               ...List.generate(items.length, (index) {
@@ -320,7 +327,10 @@ class _HomeScreenState extends State<HomeScreen> {
                                     vertical: 12,
                                   ),
                                   decoration: BoxDecoration(
-                                    color: Color(0xFF0F172A),
+                                    color:
+                                        isDark
+                                            ? const Color(0xff15243F)
+                                            : Color(0xfff8fafc),
                                     borderRadius: BorderRadius.circular(12),
                                   ),
                                   child: Row(
@@ -329,10 +339,11 @@ class _HomeScreenState extends State<HomeScreen> {
                                     children: [
                                       Text(
                                         item['title'],
-                                        style:
-                                            Theme.of(
-                                              context,
-                                            ).textTheme.bodySmall,
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.w400,
+                                          fontSize: 16,
+                                          color: Color(0xFF9CA3AF),
+                                        ),
                                       ),
                                       Text(
                                         item['amount'],

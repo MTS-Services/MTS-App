@@ -10,6 +10,7 @@ class AppColor {
   static const Color 	blue = Color(0xff12A8ED);
   static const Color fontGreyColor = Color(0xff78716C);
   static const Color shadeBackgroundColor = Color(0xff78716C);
+  static const Color 	cardColor = Color(0xff192034);
   static const Color buttonBackgroundColor = Color(0xfff1f5f9);
   static const Color textFieldBackgroundColor = Color(0xffFAFAFA);
   static const Color loginPageBorderColor = Color(0xffe8edf3);

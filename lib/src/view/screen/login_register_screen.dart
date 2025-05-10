@@ -12,8 +12,6 @@ class LoginRegisterScreen extends StatefulWidget {
 
 class _LoginRegisterScreenState extends State<LoginRegisterScreen> {
   bool isLogin = true;
-
-
   @override
   Widget build(BuildContext context) {
     final themeController = Get.put(ThemeController());
