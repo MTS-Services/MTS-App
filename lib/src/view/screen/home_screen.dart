@@ -147,7 +147,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         width: double.infinity,
                         padding: const EdgeInsets.all(16),
                         decoration: BoxDecoration(
-                          color: const Color(0xFF0F172A),
+                          color: const Color(0xFF15243F),
                           borderRadius: BorderRadius.circular(12),
                         ),
                         child: Column(
@@ -218,7 +218,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           margin: const EdgeInsets.symmetric(vertical: 8),
                           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
                           decoration: BoxDecoration(
-                            color: Color(0xFF0F172A),
+                            color: Color(0xFF15243F),
                             borderRadius: BorderRadius.circular(12),
                           ),
                           child: Row(
