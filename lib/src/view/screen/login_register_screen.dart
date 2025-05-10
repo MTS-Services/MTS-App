@@ -1,119 +1,120 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:mts_app/core/color_path.dart';
-
+import '../../controller/theme_controller.dart';
 import '../widget/custom_textfield.dart';
-
-class AuthPage extends StatefulWidget {
-  const AuthPage({super.key});
-
+class LoginRegisterScreen extends StatefulWidget {
+  const LoginRegisterScreen({super.key});
   @override
-  State<AuthPage> createState() => _AuthPageState();
+  State<LoginRegisterScreen> createState() => _LoginRegisterScreenState();
 }
 
-class _AuthPageState extends State<AuthPage> {
+class _LoginRegisterScreenState extends State<LoginRegisterScreen> {
   bool isLogin = true;
+
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(),
-      body: Center(
-        child: Container(
-          width: 370,
-          decoration: BoxDecoration(
-            color: AppColor.background,
-            borderRadius: BorderRadius.circular(12),
-          ),
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(15),
-                    color: Colors.white,
-                  ),
-                  child: Row(
-                    children: [
-                      Expanded(
-                        child: Padding(
-                          padding: const EdgeInsets.all(4.0),
-                          child: GestureDetector(
-                            onTap: () => setState(() => isLogin = true),
-                            child: Container(
-                              padding: const EdgeInsets.symmetric(vertical: 6),
-                              decoration: BoxDecoration(
-                                color:
-                                    isLogin
-                                        ? const Color(0xFF0D1525)
-                                        : Colors.white,
-                                borderRadius: BorderRadius.circular(12),
-                              ),
-                              alignment: Alignment.center,
-                              child: Text(
-                                'Login',
-                                style: TextStyle(
-                                  color: isLogin ? Colors.white : Colors.black,
-                                  fontWeight: FontWeight.bold,
+    final themeController = Get.put(ThemeController());
+    return Obx((){
+      final isDark = themeController.isDark.value;
+      return Scaffold(
+        body: Center(
+          child: Container(
+            width: 370,
+            decoration: BoxDecoration(
+              color:isDark ? AppColor.salesComment : Colors.white,
+              borderRadius: BorderRadius.circular(12),
+            ),
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15),
+                      color: isDark ? Colors.white : AppColor.buttonBackgroundColor,
+                    ),
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.all(4.0),
+                            child: GestureDetector(
+                              onTap: () => setState(() => isLogin = true),
+                              child: Container(
+                                padding: const EdgeInsets.symmetric(vertical: 6),
+                                decoration: BoxDecoration(
+                                  color: AppColor.salesComment,
+                                  borderRadius: BorderRadius.circular(12),
+                                ),
+                                alignment: Alignment.center,
+                                child: Text(
+                                  'Login',
+                                  style: TextStyle(
+                                    color: isLogin ? Colors.white : Colors.black,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                                 ),
                               ),
                             ),
                           ),
                         ),
-                      ),
-                      Expanded(
-                        child: Padding(
-                          padding: const EdgeInsets.all(4.0),
-                          child: GestureDetector(
-                            onTap: () => setState(() => isLogin = false),
-                            child: Container(
-                              padding: const EdgeInsets.symmetric(vertical: 6),
-                              decoration: BoxDecoration(
-                                color:
-                                    isLogin
-                                        ? Colors.white
-                                        : const Color(0xFF0D1525),
-                                borderRadius: BorderRadius.circular(12),
-                              ),
-                              alignment: Alignment.center,
-                              child: Text(
-                                'Register',
-                                style: TextStyle(
-                                  color: isLogin ? Colors.black : Colors.white,
-                                  fontWeight: FontWeight.bold,
+                        Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.all(4.0),
+                            child: GestureDetector(
+                              onTap: () => setState(() => isLogin = false),
+                              child: Container(
+                                padding: const EdgeInsets.symmetric(vertical: 6),
+                                decoration: BoxDecoration(
+                                  color:
+                                  isLogin
+                                      ? Colors.white
+                                      : const Color(0xFF0D1525),
+                                  borderRadius: BorderRadius.circular(12),
+                                ),
+                                alignment: Alignment.center,
+                                child: Text(
+                                  'Register',
+                                  style: TextStyle(
+                                    color: isLogin ? Colors.black : Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                                 ),
                               ),
                             ),
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                ),
-                AnimatedSize(
-                  duration: const Duration(milliseconds: 300),
-                  curve: Curves.easeInOut,
-                  child: Column(
-                    children: [
-                      isLogin ? const LoginForm() : const RegisterForm(),
-                      const SizedBox(height: 20),
-                      ElevatedButton.icon(
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.lightBlue,
-                          minimumSize: const Size(double.infinity, 48),
+                  AnimatedSize(
+                    duration: const Duration(milliseconds: 300),
+                    curve: Curves.easeInOut,
+                    child: Column(
+                      children: [
+                        isLogin ? const LoginForm() : const RegisterForm(),
+                        const SizedBox(height: 20),
+                        ElevatedButton.icon(
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.lightBlue,
+                            minimumSize: const Size(double.infinity, 48),
+                          ),
+                          onPressed: () {},
+                          icon: const Icon(Icons.login),
+                          label: Text(isLogin ? 'Sign In' : 'Register'),
                         ),
-                        onPressed: () {},
-                        icon: const Icon(Icons.login),
-                        label: Text(isLogin ? 'Sign In' : 'Register'),
-                      ),
-                    ],
-                  ),
-                )
-              ],
+                      ],
+                    ),
+                  )
+                ],
+              ),
             ),
           ),
         ),
-      ),
-    );
+      );
+    });
   }
 }
 
@@ -140,7 +141,7 @@ class LoginForm extends StatelessWidget {
                   child: Text(
                     'Enter your credentials to access your account',
                     textAlign: TextAlign.center,
-                    style: TextStyle(color: AppColor.fontGrey),
+                    style: TextStyle(color: AppColor.fontGreyColor),
                   ),
                 ),
               ],

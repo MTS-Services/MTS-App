@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mts_app/core/color_path.dart';
 import 'package:mts_app/src/controller/theme_controller.dart';
+import 'package:mts_app/src/view/screen/home_screen.dart';
 import 'package:mts_app/src/view/screen/login_register_screen.dart';
 
 class MtsApp extends StatelessWidget {
@@ -17,7 +19,7 @@ class MtsApp extends StatelessWidget {
         themeMode: themeController.theme,
         theme: ThemeData(
           brightness: Brightness.light,
-          primaryColor: Colors.blue,
+          primaryColor: AppColor.fontGreyColor,
           scaffoldBackgroundColor: Colors.white,
           appBarTheme: const AppBarTheme(
             backgroundColor: Colors.white,

@@ -13,7 +13,6 @@ class CustomTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextField(
-      autofocus: true,
       obscureText: true,
       decoration: InputDecoration(
         labelText: labelText,
