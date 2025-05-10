@@ -10,7 +10,7 @@ class MtsApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'MTS App',
-      home: LoginRegisterScreen(),
+      home: AuthPage(),
       debugShowCheckedModeBanner: false,
       themeMode: ThemeMode.dark,
       theme: ThemeData(
