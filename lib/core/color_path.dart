@@ -7,5 +7,6 @@ class AppColor{
   static const Color 	statusText = Color(0xffF44336);
   static const Color 	salesComment = Color(0xff11284A);
   static const Color 	background = Color(0xff192034);
+  static const Color 	cardColor = Color(0xff192034);
 
 }
