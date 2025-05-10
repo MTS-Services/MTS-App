@@ -3,14 +3,14 @@ import 'package:mts_app/core/color_path.dart';
 
 import '../widget/custom_textfield.dart';
 
-class AuthPage extends StatefulWidget {
-  const AuthPage({super.key});
+class LoginRegisterScreen extends StatefulWidget {
+  const LoginRegisterScreen({super.key});
 
   @override
-  State<AuthPage> createState() => _AuthPageState();
+  State<LoginRegisterScreen> createState() => _LoginRegisterScreenState();
 }
 
-class _AuthPageState extends State<AuthPage> {
+class _LoginRegisterScreenState extends State<LoginRegisterScreen> {
   bool isLogin = true;
 
   @override
@@ -122,7 +122,7 @@ class LoginForm extends StatelessWidget {
                   child: Text(
                     'Enter your credentials to access your account',
                     textAlign: TextAlign.center,
-                    style: TextStyle(color: AppColor.fontGrey),
+                    style: TextStyle(color: AppColor.fontGreyColor),
                   ),
                 ),
               ],

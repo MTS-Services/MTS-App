@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mts_app/src/controller/theme_controller.dart';
+import 'package:mts_app/src/view/screen/home_screen.dart';
 import 'package:mts_app/src/view/screen/login_register_screen.dart';
 
 class MtsApp extends StatelessWidget {
@@ -37,7 +38,7 @@ class MtsApp extends StatelessWidget {
           ),
           iconTheme: const IconThemeData(color: Colors.white),
         ),
-        home: const LoginRegisterScreen(),
+        home: HomeScreen(),
       ),
     );
   }
