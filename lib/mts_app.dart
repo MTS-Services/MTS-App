@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mts_app/src/view/screen/home_screen.dart';
+import 'package:mts_app/src/view/screen/login_register_screen.dart';
 
 
 class MtsApp extends StatelessWidget {
@@ -9,7 +10,7 @@ class MtsApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'MTS App',
-      home: HomeScreen(),
+      home: AuthPage(),
       debugShowCheckedModeBanner: false,
       themeMode: ThemeMode.dark,
       theme: ThemeData(
