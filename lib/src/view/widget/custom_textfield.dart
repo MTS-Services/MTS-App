@@ -3,15 +3,17 @@ import 'package:mts_app/core/color_path.dart';
 
 class CustomTextField extends StatelessWidget {
   final String? labelText;
+  final Function()? onTap;
 
   const CustomTextField({
     super.key,
-    this.labelText,
+    this.labelText, this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
     return TextField(
+      autofocus: true,
       obscureText: true,
       decoration: InputDecoration(
         labelText: labelText,
@@ -29,6 +31,7 @@ class CustomTextField extends StatelessWidget {
           ),
         ),
       ),
+      onTap: onTap,
     );
   }
 }

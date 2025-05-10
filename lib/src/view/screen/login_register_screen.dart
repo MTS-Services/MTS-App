@@ -89,7 +89,25 @@ class _AuthPageState extends State<AuthPage> {
                     ],
                   ),
                 ),
-                isLogin ? const LoginForm() : const RegisterForm(),
+                AnimatedSize(
+                  duration: const Duration(milliseconds: 300),
+                  curve: Curves.easeInOut,
+                  child: Column(
+                    children: [
+                      isLogin ? const LoginForm() : const RegisterForm(),
+                      const SizedBox(height: 20),
+                      ElevatedButton.icon(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.lightBlue,
+                          minimumSize: const Size(double.infinity, 48),
+                        ),
+                        onPressed: () {},
+                        icon: const Icon(Icons.login),
+                        label: Text(isLogin ? 'Sign In' : 'Register'),
+                      ),
+                    ],
+                  ),
+                )
               ],
             ),
           ),
@@ -155,15 +173,6 @@ class LoginForm extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 12),
-          ElevatedButton.icon(
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.lightBlue,
-              minimumSize: const Size(double.infinity, 48),
-            ),
-            onPressed: () {},
-            icon: const Icon(Icons.login),
-            label: const Text('Sign In'),
-          ),
         ],
       ),
     );
