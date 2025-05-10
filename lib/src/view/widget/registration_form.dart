@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../core/color_path.dart';
 import '../../controller/theme_controller.dart';
-import 'custom_dropdown.dart';
+import 'custom_dropdown_button.dart';
 import 'custom_textfield.dart';
 
 class RegisterForm extends StatelessWidget {
