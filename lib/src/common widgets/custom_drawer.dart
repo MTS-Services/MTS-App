@@ -6,6 +6,7 @@ import 'package:mts_app/src/controller/theme_controller.dart';
 import 'package:mts_app/src/view/screen/home_screen.dart';
 import 'package:mts_app/src/common%20widgets/custom_drawer_icons.dart';
 import 'package:mts_app/src/view/screen/login_register_screen.dart';
+import 'package:mts_app/src/view/screen/project_screen.dart';
 
 class AppDrawer extends StatelessWidget {
   const AppDrawer({super.key});
@@ -41,7 +42,7 @@ class AppDrawer extends StatelessWidget {
             title: 'Projects',
             icon: Icon(Iconsax.activity),
             onTap: () {
-              Get.to(() {});
+              Get.to(() => ProjectScreen());
             },
           ),
           CustomDrawerIcon(
